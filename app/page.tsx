@@ -3,13 +3,34 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Film, Palette, Image, ArrowRight, Sparkles, Zap, Globe } from 'lucide-react';
 
-const CreatorHub = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+type AppType = 'clipper' | 'board' | 'thumbnail';
+
+interface FeatureType {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  gradient: string;
+  app: AppType;
+  features: string[];
+}
+
+interface StatType {
+  number: string;
+  label: string;
+}
+
+const CreatorHub: React.FC = () => {
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e) => {
+    const handleScroll = (): void => setScrollY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent): void => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -22,17 +43,17 @@ const CreatorHub = () => {
     };
   }, []);
 
-  const launchApp = (appType) => {
-    const urls = {
+  const launchApp = (appType: AppType): void => {
+    const urls: Record<AppType, string> = {
       'clipper': 'https://shortsmaker-brown.vercel.app/',
       'board': 'https://collab-ivory.vercel.app/',
       'thumbnail': 'https://tnail.vercel.app/'
     };
-    
+
     window.location.href = urls[appType];
   };
 
-  const FloatingOrbs = () => (
+  const FloatingOrbs: React.FC = () => (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {[...Array(6)].map((_, i) => (
         <div
@@ -53,7 +74,7 @@ const CreatorHub = () => {
     </div>
   );
 
-  const ParticleField = () => (
+  const ParticleField: React.FC = () => (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {[...Array(50)].map((_, i) => (
         <div
@@ -69,6 +90,42 @@ const CreatorHub = () => {
       ))}
     </div>
   );
+
+  const features: FeatureType[] = [
+    {
+      icon: Film,
+      title: "YouTube Shorts Clipper",
+      description: "Transform long-form content into viral shorts with AI-powered moment detection. Smart editing, auto-captions, and trend analysis to maximize your reach.",
+      gradient: "from-red-500 to-pink-500",
+      app: "clipper",
+      features: ["AI Moment Detection", "Auto Captions", "Trend Analysis"]
+    },
+    {
+      icon: Palette,
+      title: "Collaborative Design Board",
+      description: "Professional design workspace with real-time collaboration. Infinite canvas, vector tools, and seamless team workflow for creative projects.",
+      gradient: "from-purple-500 to-indigo-500",
+      app: "board",
+      features: ["Real-time Collaboration", "Vector Tools", "Infinite Canvas"]
+    },
+    {
+      icon: Image,
+      title: "Thumbnail Maker",
+      description: "Create scroll-stopping thumbnails with AI suggestions. A/B testing, click prediction, and professional templates to boost your CTR.",
+      gradient: "from-cyan-500 to-blue-500",
+      app: "thumbnail",
+      features: ["AI Suggestions", "A/B Testing", "Click Prediction"]
+    }
+  ];
+
+  const stats: StatType[] = [
+    { number: "1M+", label: "Creators" },
+    { number: "50M+", label: "Videos Created" },
+    { number: "99.9%", label: "Uptime" },
+    { number: "24/7", label: "Support" }
+  ];
+
+  const navItems: string[] = ['Features', 'About', 'Contact'];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white overflow-hidden relative">
@@ -95,7 +152,7 @@ const CreatorHub = () => {
               <Sparkles className="inline-block w-6 h-6 ml-2 text-yellow-400 animate-spin" />
             </div>
             <div className="hidden md:flex space-x-8">
-              {['Features', 'About', 'Contact'].map((item, i) => (
+              {navItems.map((item, i) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -171,32 +228,7 @@ const CreatorHub = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Film,
-                title: "YouTube Shorts Clipper",
-                description: "Transform long-form content into viral shorts with AI-powered moment detection. Smart editing, auto-captions, and trend analysis to maximize your reach.",
-                gradient: "from-red-500 to-pink-500",
-                app: "clipper",
-                features: ["AI Moment Detection", "Auto Captions", "Trend Analysis"]
-              },
-              {
-                icon: Palette,
-                title: "Collaborative Design Board",
-                description: "Professional design workspace with real-time collaboration. Infinite canvas, vector tools, and seamless team workflow for creative projects.",
-                gradient: "from-purple-500 to-indigo-500",
-                app: "board",
-                features: ["Real-time Collaboration", "Vector Tools", "Infinite Canvas"]
-              },
-              {
-                icon: Image,
-                title: "Thumbnail Maker",
-                description: "Create scroll-stopping thumbnails with AI suggestions. A/B testing, click prediction, and professional templates to boost your CTR.",
-                gradient: "from-cyan-500 to-blue-500",
-                app: "thumbnail",
-                features: ["AI Suggestions", "A/B Testing", "Click Prediction"]
-              }
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <div
                 key={index}
                 className="group relative"
@@ -248,12 +280,7 @@ const CreatorHub = () => {
       <section className="relative py-20 px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "1M+", label: "Creators" },
-              { number: "50M+", label: "Videos Created" },
-              { number: "99.9%", label: "Uptime" },
-              { number: "24/7", label: "Support" }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <div key={index} className="group">
                 <div className="text-5xl font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                   {stat.number}
