@@ -61,17 +61,6 @@ CreatorDock is a unified SaaS hub that empowers content creators with AI-powered
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome!  
-To get started:
-
-```bash
-git checkout -b feature/your-feature-name
-pnpm dev
-# Make changes
-git commit -m "Add: your feature"
-
 
 
 
