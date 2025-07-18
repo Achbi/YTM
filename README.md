@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 CreatorDock – Multi-Tool SaaS Platform for Creators
 
-## Getting Started
+CreatorDock is a unified SaaS hub that empowers content creators with AI-powered tools to streamline their content creation workflow. Whether you're clipping YouTube Shorts, designing thumbnails, or collaborating on ideas — CreatorDock brings everything under one roof.
 
-First, run the development server:
+![CreatorDock Banner](https://your-screenshot-or-banner-url.com)
+
+---
+
+## 🧰 Tools Included
+
+| Tool                | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| 🎬 **Shorts Clipper**     | Generate viral YouTube Shorts using AI summarization + prompt engineering. |
+| 🖼️ **Thumbnail Maker**    | Collaborative editor for high-conversion YouTube thumbnails.              |
+| 🧠 **Collab Board**        | Real-time multiplayer whiteboard for content planning & brainstorming.    |
+
+---
+
+## 🔧 Tech Stack
+
+- **Frontend**: Next.js 14, TailwindCSS, ShadCN UI, Framer Motion  
+- **Backend**: Node.js (Next API Routes), Python (FastAPI for AI tasks)  
+- **Database**: PostgreSQL (Neon) + Prisma ORM  
+- **Auth**: Auth.js (NextAuth unified across apps)  
+- **Storage**: AWS S3 (media upload & access)  
+- **AI**: OpenAI GPT (Shorts summarization & prompts)  
+- **Realtime**: Liveblocks (Collab Board multiplayer sync)  
+- **Payments**: Stripe  
+- **Infra**: Monorepo with shared `.env`, unified DB + auth
+
+---
+
+---
+
+# 🚀 CreatorDock – Multi-Tool SaaS Platform for Creators
+
+CreatorDock is a unified SaaS hub that empowers content creators with AI-powered tools to streamline their content creation workflow. Whether you're clipping YouTube Shorts, designing thumbnails, or collaborating on ideas — CreatorDock brings everything under one roof.
+
+---
+
+## 🌟 Features
+
+- ✂️ **Auto-clip and subtitle YouTube Shorts**  
+- 🧠 **AI-based video summarization and topic extraction**  
+- 🎨 **Drag & drop thumbnail editor with templates**  
+- 🧑‍🤝‍🧑 **Real-time whiteboard for idea collaboration**  
+- 🔐 **Single sign-on with persistent sessions across apps**  
+- 💾 **Centralized file storage with AWS S3**  
+- 💸 **Stripe integration for premium features**
+
+---
+
+## 📌 Roadmap
+
+- [x] AI Shorts Clipping  
+- [x] Real-time Collab Board  
+- [x] Thumbnail Maker  
+- [ ] Audio Dubbing & Voice Cloning  
+- [ ] Plugin Marketplace  
+- [ ] Team Dashboard & Permissions  
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+To get started:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git checkout -b feature/your-feature-name
 pnpm dev
-# or
-bun dev
-```
+# Make changes
+git commit -m "Add: your feature"
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
